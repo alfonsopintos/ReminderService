@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bill:</strong>
+  <%= @event_recurrence.bill_id %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @event_recurrence.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @event_recurrence.end_date %>
+</p>
+
+<p>
+  <strong>Every:</strong>
+  <%= @event_recurrence.every %>
+</p>
+
+<%= link_to 'Edit', edit_event_recurrence_path(@event_recurrence) %> |
+<%= link_to 'Back', event_recurrences_path %>
