@@ -69,6 +69,6 @@ class EventRecurrencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_recurrence_params
-      params.require(:event_recurrence).permit(:bill_id, :start_date, :end_date, :every)
+      params.require(:event_recurrence).permit(:bill_id, :start_date, :end_date, :every, :interval)
     end
 end
