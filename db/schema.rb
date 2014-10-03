@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002015743) do
+ActiveRecord::Schema.define(version: 20141003203548) do
 
   create_table "event_recurrences", force: true do |t|
     t.string   "bill_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20141002015743) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "interval"
+    t.string   "first_name"
+    t.string   "cell_phone"
+    t.string   "email"
+    t.string   "provider_name"
+    t.string   "category_name"
+    t.string   "contact_method"
   end
 
 end
