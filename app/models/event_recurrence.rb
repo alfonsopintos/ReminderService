@@ -48,38 +48,4 @@ class EventRecurrence < ActiveRecord::Base
       :body => "Hello #{self.first_name}, You have just added your #{self.provider_name} #{self.category_name} Bill!")
     end
 
-
-    # def get_twilio
-    #   account_sid = "AC458c66afe8c3be7f362e34e212c63b84"
-    #   auth_token = "65796c1331a3c329820dd1f22033946e"
-
-    #   number_to_send_to = self.cell_phone
-    #   twilio_phone_number = "(954)-933-5130"
-
-    #   client = Twilio::REST::Client.new account_sid, auth_token
-
-    #   yield(client, twilio_phone_number, number_to_send_to)
-    # end
-
-
-    def send_call
-      message = "Hello #{self.first_name}! This is a friendly reminder that your #{self.provider_name}, #{self.category_name} bill is due tomorrow.Goodbye!"
-      url = "http://twimlets.com/voicemail?Message=#{URI::encode message}"
-
-      account_sid = "AC458c66afe8c3be7f362e34e212c63b84"
-      auth_token = "65796c1331a3c329820dd1f22033946e"
-
-      number_to_send_to = self.cell_phone
-      twilio_phone_number = "(954)-933-5130"
-
-      @twilio_client = Twilio::REST::Client.new account_sid, auth_token
-
-      @twilio_client.account.calls.create(
-      :from => twilio_phone_number,
-      :to => number_to_send_to,
-      :url => url
-      )
-    end
-
-
 end
