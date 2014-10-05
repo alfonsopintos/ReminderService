@@ -40,3 +40,5 @@ gem 'httparty'
 
 gem 'recurrence'
 
+gem 'twilio-ruby'
+
