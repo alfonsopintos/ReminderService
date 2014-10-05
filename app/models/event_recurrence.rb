@@ -1,5 +1,5 @@
 class EventRecurrence < ActiveRecord::Base
-  after_create :send_call
+  after_create :send_message
 
   def dates(options={})
       options = {:every => every, :starts => start_date, :until => end_date, :interval => interval || 1}.merge(options)
