@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem "mail"
 # Use unicorn as the app server
 # gem 'unicorn'
 gem 'sidekiq'
@@ -41,4 +41,6 @@ gem 'httparty'
 gem 'recurrence'
 
 gem 'twilio-ruby'
+
+gem 'sidekiq_mailer'
 
