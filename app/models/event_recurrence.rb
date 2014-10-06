@@ -1,7 +1,7 @@
 class EventRecurrence < ActiveRecord::Base
   
-  # validates :cell_phone, length: { is: 10 }
-  # validates :cell_phone, :numericality => {:only_integer => true}
+  validates :cell_phone, length: { is: 10 }
+  validates :cell_phone, :numericality => {:only_integer => true}
 
   def dates(options={})
       options = {:every => every, :starts => start_date, :until => end_date, :interval => interval || 1}.merge(options)
