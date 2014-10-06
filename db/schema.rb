@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006152859) do
+ActiveRecord::Schema.define(version: 20141006175328) do
 
   create_table "event_recurrences", force: true do |t|
     t.string   "bill_id"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20141006152859) do
     t.string   "email"
     t.string   "contact_method"
     t.text     "initial"
-    t.text     "reminder"
-    t.text     "Url"
+    t.text     "text_reminder"
+    t.text     "call_reminder"
   end
 
 end
