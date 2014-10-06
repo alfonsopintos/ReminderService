@@ -14,7 +14,7 @@ class FirstWorker
     @twilio_client.account.sms.messages.create(
     :from => twilio_phone_number,
     :to => number_to_send_to,
-    :body => "Hello #{event_recurrence.first_name}, You have just added your #{event_recurrence.provider_name} #{event_recurrence.category_name} Bill!")
+    :body => "#{event_recurrence.initial}")
   end
   
 end
