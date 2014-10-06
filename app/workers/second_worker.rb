@@ -9,7 +9,7 @@ class SecondWorker
     EventRecurrence.all.each do |event|
 
       #get would go here. get hash with messages, parse for correct hash in each message block
-      
+     
       event.dates.each do |duedate|
         
         if (duedate == tomorrow) && (event.contact_method == 'text')
