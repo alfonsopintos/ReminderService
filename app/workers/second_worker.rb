@@ -21,12 +21,12 @@ class SecondWorker
           @twilio_client.account.sms.messages.create(
           :from => twilio_phone_number,
           :to => number_to_send_to,
-          :body => "#{event.reminder}")
+          :body => "#{event.text_reminder}")
           
           # call method
           account_sid = "AC458c66afe8c3be7f362e34e212c63b84"
           auth_token = "65796c1331a3c329820dd1f22033946e"
-          message = "#{event.reminder} GoodBye!"
+          message = "#{event.call_reminder}"
           url = "http://twimlets.com/voicemail?Message=#{URI::encode message}"
           number_to_send_to = event.cell_phone
           twilio_phone_number = "(954)-933-5130"
@@ -46,13 +46,13 @@ class SecondWorker
           @twilio_client.account.sms.messages.create(
           :from => twilio_phone_number,
           :to => number_to_send_to,
-          :body => "#{event.reminder}")
+          :body => "#{event.text_reminder}")
           
-        elsif (duedate == tomorrow) && (event.contact_method == 'phone_call')
+        elsif (duedate == tomorrow) && (event.contact_method == 'phone call')
            # call method
           account_sid = "AC458c66afe8c3be7f362e34e212c63b84"
           auth_token = "65796c1331a3c329820dd1f22033946e"
-          message = "#{event.reminder} GoodBye!"
+          message = "#{event.call_reminder}"
           url = "http://twimlets.com/voicemail?Message=#{URI::encode message}"
           number_to_send_to = event.cell_phone
           twilio_phone_number = "(954)-933-5130"
