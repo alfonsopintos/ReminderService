@@ -46,3 +46,6 @@ gem 'sidekiq_mailer'
 
 gem 'wirble'
 
+gem 'rspec-rails'
+
+
