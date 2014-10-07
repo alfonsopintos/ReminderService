@@ -10,8 +10,8 @@ class EventRecurrence < ActiveRecord::Base
   validates :every, presence: true
   validates :object_id, presence: true
 
-  # validates :start_date, :must_be_before_end_date  
-  # validates :end_date, :must_be_after_start_date
+  validate :end_date_is_after_start_date, 
+    :start_date_is_before_end_date
   
   def dates(options={})
     options = {:every => every, :starts => start_date, :until => end_date, :interval => interval || 1}.merge(options)
@@ -43,13 +43,13 @@ class EventRecurrence < ActiveRecord::Base
     Recurrence.new(options).events
   end
 
-  def must_be_after_start_date 
-    errors.add(:end_date, "End Date cannot be before start Date.") if
+  def end_date_is_after_start_date 
+    errors.add(:end_date, "Check your Dates. End Date cannot be before start Date. An event must have a start date, previous to its end date") if
     start_date > end_date    
   end
 
-  def must_be_before_end_date
-    errors.add(:start_date, "Start Date cannot be after End Date.") if
+  def start_date_is_before_end_date
+    errors.add(:start_date, "You must start your event before its own end date. An event cannot start after its end date") if
     start_date > end_date 
   end
 
