@@ -11,20 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007020514) do
+ActiveRecord::Schema.define(version: 20141007051321) do
 
   create_table "calls", force: true do |t|
     t.string   "cell_phone"
     t.text     "call_reminder"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "eventrecurrence_id"
+    t.integer  "event_recurrence_id"
   end
+
+  add_index "calls", ["event_recurrence_id"], name: "index_calls_on_event_recurrence_id"
+  add_index "calls", ["eventrecurrence_id"], name: "index_calls_on_eventrecurrence_id"
 
   create_table "emails", force: true do |t|
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "eventrecurrence_id"
+    t.integer  "event_recurrence_id"
   end
+
+  add_index "emails", ["event_recurrence_id"], name: "index_emails_on_event_recurrence_id"
+  add_index "emails", ["eventrecurrence_id"], name: "index_emails_on_eventrecurrence_id"
 
   create_table "event_recurrences", force: true do |t|
     t.string   "object_id"
@@ -41,6 +51,11 @@ ActiveRecord::Schema.define(version: 20141007020514) do
     t.text     "text_reminder"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "eventrecurrence_id"
+    t.integer  "event_recurrence_id"
   end
+
+  add_index "texts", ["event_recurrence_id"], name: "index_texts_on_event_recurrence_id"
+  add_index "texts", ["eventrecurrence_id"], name: "index_texts_on_eventrecurrence_id"
 
 end

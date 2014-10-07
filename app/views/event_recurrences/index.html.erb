@@ -14,7 +14,7 @@
   <tbody>
     <% @event_recurrences.each do |event_recurrence| %>
       <tr>
-        <td><%= event_recurrence.bill_id %></td>
+        <td><%= event_recurrence.object_id %></td>
         <td><%= event_recurrence.start_date %></td>
         <td><%= event_recurrence.end_date %></td>
         <td><%= event_recurrence.every %></td>
