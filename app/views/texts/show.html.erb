@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cell phone:</strong>
+  <%= @text.cell_phone %>
+</p>
+
+<p>
+  <strong>Text reminder:</strong>
+  <%= @text.text_reminder %>
+</p>
+
+<%= link_to 'Edit', edit_text_path(@text) %> |
+<%= link_to 'Back', texts_path %>
