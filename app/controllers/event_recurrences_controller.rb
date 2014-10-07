@@ -28,7 +28,6 @@ class EventRecurrencesController < ApplicationController
 
     respond_to do |format|
       if @event_recurrence.save
-        # FirstWorker.perform_async(@event_recurrence.id)
         format.html { redirect_to @event_recurrence, notice: 'Event recurrence was successfully created.' }
         format.json { render :show, status: :created, location: @event_recurrence }
       else
