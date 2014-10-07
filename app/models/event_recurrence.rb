@@ -3,6 +3,13 @@ class EventRecurrence < ActiveRecord::Base
   has_one :call, :dependent => :destroy
   has_one :email, :dependent => :destroy
 
+  # validate 
+  #   start_date
+  #   end_date
+  #   every
+  #   interval
+  #   object_id
+
 
   
   def dates(options={})

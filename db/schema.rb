@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007051321) do
+ActiveRecord::Schema.define(version: 20141007185421) do
 
   create_table "calls", force: true do |t|
     t.string   "cell_phone"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20141007051321) do
   add_index "calls", ["event_recurrence_id"], name: "index_calls_on_event_recurrence_id"
 
   create_table "emails", force: true do |t|
-    t.string   "email"
+    t.string   "email_address"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_recurrence_id"
+    t.text     "email_reminder"
   end
 
   add_index "emails", ["event_recurrence_id"], name: "index_emails_on_event_recurrence_id"

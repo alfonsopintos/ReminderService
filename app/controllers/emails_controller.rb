@@ -71,7 +71,7 @@ class EmailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_params
-      params.require(:email).permit(:email, :event_recurrence_id)
+      params.require(:email).permit(:email_address, :event_recurrence_id, :email_reminder)
     end
 
     def event_recurrence_params
