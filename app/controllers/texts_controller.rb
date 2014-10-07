@@ -24,8 +24,6 @@ class TextsController < ApplicationController
   # POST /texts
   # POST /texts.json
   def create
-    puts event_recurrence_params
-    puts text_params
     @event_recurrence = EventRecurrence.new(event_recurrence_params)
     @text = Text.new(text_params)
     @text_recurrence = @text.event_recurrence 

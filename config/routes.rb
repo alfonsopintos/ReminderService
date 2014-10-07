@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :calls
+
   resources :texts
 
   resources :event_recurrences

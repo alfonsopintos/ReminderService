@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007002133) do
+ActiveRecord::Schema.define(version: 20141007020214) do
+
+  create_table "calls", force: true do |t|
+    t.string   "cell_phone"
+    t.text     "call_reminder"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "event_recurrences", force: true do |t|
     t.string   "object_id"
@@ -29,5 +36,5 @@ ActiveRecord::Schema.define(version: 20141007002133) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
+  
 end
