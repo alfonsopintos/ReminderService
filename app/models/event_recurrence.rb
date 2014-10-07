@@ -3,14 +3,18 @@ class EventRecurrence < ActiveRecord::Base
   has_one :call, :dependent => :destroy
   has_one :email, :dependent => :destroy
 
-  # validate 
-  #   start_date
-  #   end_date
-  #   every
-  #   interval
-  #   object_id
 
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :every, presence: true
+  validates :interval, presence: true
+  validates :object_id, presence: true
 
+  validates :start_date, :must_be_before_end_date  
+  validates :every,
+  validates :interval,
+  validates :object_id,
+  validates :end_date, :must_be_after_start_date
   
   def dates(options={})
     options = {:every => every, :starts => start_date, :until => end_date, :interval => interval || 1}.merge(options)
@@ -41,4 +45,15 @@ class EventRecurrence < ActiveRecord::Base
 
     Recurrence.new(options).events
   end
+
+  def must_be_after_start_date 
+    errors.add(:end_date, "End Date cannot be before start Date.") if
+    start_date > end_date    
+  end
+
+  def must_be_before_end_date
+    errors.add(:start_date, "Start Date cannot be after End Date.") if
+    start_date > end_date 
+  end
+
 end
