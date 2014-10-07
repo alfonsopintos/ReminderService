@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007142649) do
+ActiveRecord::Schema.define(version: 20141007051321) do
 
   create_table "calls", force: true do |t|
     t.string   "cell_phone"
