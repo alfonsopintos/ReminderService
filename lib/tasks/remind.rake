@@ -10,8 +10,8 @@ desc "send off text and call reminders"
     TextWorker.new.perform
     puts "Succeed"
 
-    # puts "Email Worker Now Running"
-    # EmailWorker.new.perform
-    # puts "Succeed"
+    puts "Email Worker Now Running"
+    EmailWorker.new.perform
+    puts "Succeed"
 
   end
