@@ -1,7 +1,10 @@
 class EventRecurrence < ActiveRecord::Base
   has_one :text
+
   has_one :call
-  
+
+  has_one :email
+
   
   def dates(options={})
     options = {:every => every, :starts => start_date, :until => end_date, :interval => interval || 1}.merge(options)

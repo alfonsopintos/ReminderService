@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141007020514) do
 
+
   create_table "calls", force: true do |t|
     t.string   "cell_phone"
     t.text     "call_reminder"
