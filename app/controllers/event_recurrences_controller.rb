@@ -1,6 +1,6 @@
 class EventRecurrencesController < ApplicationController
   before_action :set_event_recurrence, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /event_recurrences
   # GET /event_recurrences.json
   def index

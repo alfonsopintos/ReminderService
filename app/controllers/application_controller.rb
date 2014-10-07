@@ -3,14 +3,23 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
-  before_filter :restrict_access
+ 
+
+  # def request_http_token_authentication(realm = "Application")  
+  #   self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
+  #   self.__send__ :render, :json => { :error => "HTTP Token: Access denied. You did not provide an valid API key." }.to_json, :status => :unauthorized
+  # end
 
 
   private
+# def restrict_access
+#   api_key = ApiKey.find_by_access_token(params[:access_token])
+#   head :unauthorized unless api_key
+# end
   
   def restrict_access
     authenticate_or_request_with_http_token do |token, options|
-      ApiKey.exists?(access_token: token)
-  end
+    ApiKey.exists?(access_token: token)
     end
+  end
 end
