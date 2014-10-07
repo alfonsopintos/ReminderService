@@ -26,7 +26,7 @@ class TextsController < ApplicationController
   def create
     @event_recurrence = EventRecurrence.new(event_recurrence_params)
     @text = Text.new(text_params)
-    @text_recurrence = @text.event_recurrence 
+    @text.event_recurrence = @event_recurrence
 
     respond_to do |format|
       if @text.save && @event_recurrence.save
@@ -71,7 +71,7 @@ class TextsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def text_params
-      params.require(:text).permit(:cell_phone, :text_reminder)
+      params.require(:text).permit(:cell_phone, :text_reminder, :event_recurrence_id)
     end
 
     def event_recurrence_params

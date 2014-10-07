@@ -1,9 +1,8 @@
 class EventRecurrence < ActiveRecord::Base
-  has_one :text
+  has_one :text, :dependent => :destroy
+  has_one :call, :dependent => :destroy
+  has_one :email, :dependent => :destroy
 
-  has_one :call
-
-  has_one :email
 
   
   def dates(options={})

@@ -26,7 +26,7 @@ class CallsController < ApplicationController
   def create
     @event_recurrence = EventRecurrence.new(event_recurrence_params)
     @call = Call.new(call_params)
-    @call_recurrence = @call.event_recurrence 
+    @call.event_recurrence = @event_recurrence 
 
     respond_to do |format|
       if @call.save && @event_recurrence.save
@@ -71,7 +71,7 @@ class CallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def call_params
-      params.require(:call).permit(:cell_phone, :call_reminder)
+      params.require(:call).permit(:cell_phone, :call_reminder, :event_recurrence_id)
     end
     
     def event_recurrence_params

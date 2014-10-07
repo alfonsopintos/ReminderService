@@ -26,7 +26,7 @@ class EmailsController < ApplicationController
   def create
     @email = Email.new(email_params)
     @event_recurrence = EventRecurrence.new(event_recurrence_params)
-    @email_recurrence = @email.event_recurrence
+    @email.event_recurrence = @event_recurrence  
 
     respond_to do |format|
       if @email.save && @event_recurrence.save
@@ -71,7 +71,7 @@ class EmailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_params
-      params.require(:email).permit(:email)
+      params.require(:email).permit(:email, :event_recurrence_id)
     end
 
     def event_recurrence_params
