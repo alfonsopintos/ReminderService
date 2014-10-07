@@ -1,6 +1,6 @@
 class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_access
   # GET /texts
   # GET /texts.json
   def index

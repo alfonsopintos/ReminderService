@@ -1,6 +1,6 @@
 class CallsController < ApplicationController
   before_action :set_call, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_access
   # GET /calls
   # GET /calls.json
   def index

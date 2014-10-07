@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   before_action :set_email, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_access
   # GET /emails
   # GET /emails.json
   def index
