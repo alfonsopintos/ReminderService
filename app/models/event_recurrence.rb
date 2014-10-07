@@ -7,13 +7,9 @@ class EventRecurrence < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :every, presence: true
-  validates :interval, presence: true
   validates :object_id, presence: true
 
   validates :start_date, :must_be_before_end_date  
-  validates :every,
-  validates :interval,
-  validates :object_id,
   validates :end_date, :must_be_after_start_date
   
   def dates(options={})
