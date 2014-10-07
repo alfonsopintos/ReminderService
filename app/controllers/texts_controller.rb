@@ -24,9 +24,11 @@ class TextsController < ApplicationController
   # POST /texts
   # POST /texts.json
   def create
+    puts event_recurrence_params
+    puts text_params
     @event_recurrence = EventRecurrence.new(event_recurrence_params)
     @text = Text.new(text_params)
-    @text.@event_recurrence = @text_recurrence
+    @text_recurrence = @text.event_recurrence 
 
     respond_to do |format|
       if @text.save && @event_recurrence.save
@@ -72,5 +74,9 @@ class TextsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def text_params
       params.require(:text).permit(:cell_phone, :text_reminder)
+    end
+
+    def event_recurrence_params
+      params.require(:event_recurrence).permit(:object_id, :start_date, :end_date, :every, :interval)
     end
 end

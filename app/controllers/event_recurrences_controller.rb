@@ -28,7 +28,7 @@ class EventRecurrencesController < ApplicationController
 
     respond_to do |format|
       if @event_recurrence.save
-        FirstWorker.perform_async(@event_recurrence.id)
+        # FirstWorker.perform_async(@event_recurrence.id)
         format.html { redirect_to @event_recurrence, notice: 'Event recurrence was successfully created.' }
         format.json { render :show, status: :created, location: @event_recurrence }
       else
@@ -70,6 +70,6 @@ class EventRecurrencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_recurrence_params
-      params.require(:event_recurrence).permit(:bill_id, :start_date, :end_date, :every, :interval, :cell_phone, :email, :provider_name, :category_name, :contact_method, :initial, :text_reminder, :call_reminder)
+      params.require(:event_recurrence).permit(:object_id, :start_date, :end_date, :every, :interval)
     end
 end
