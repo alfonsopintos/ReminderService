@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007215110) do
+ActiveRecord::Schema.define(version: 20141008193112) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user"
+    t.integer  "client_id"
   end
+
+  add_index "api_keys", ["client_id"], name: "index_api_keys_on_client_id"
 
   create_table "calls", force: true do |t|
     t.string   "cell_phone"
@@ -29,6 +31,15 @@ ActiveRecord::Schema.define(version: 20141007215110) do
   end
 
   add_index "calls", ["event_recurrence_id"], name: "index_calls_on_event_recurrence_id"
+
+  create_table "clients", force: true do |t|
+    t.string   "name"
+    t.integer  "text_count",  default: 0
+    t.integer  "call_count",  default: 0
+    t.integer  "email_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "emails", force: true do |t|
     t.string   "email_address"
