@@ -74,7 +74,7 @@ class TextsController < ApplicationController
       api_key = ApiKey.where(access_token: token).take   
       # @client is being set equal to the value of the client_id key in the api_key hash
       @client = Client.find(api_key['client_id'].to_i)
-      # email_counter is a method in the client model that increments the client email_count by one every time its called
+      # text_counter is a method in the client model that increments the client text_count by one every time its called
       @client.text_counter 
       end
     end

@@ -27,6 +27,10 @@ class EventRecurrence < ActiveRecord::Base
       end
     self.every = 
       case self.every
+      when 'day'
+        'day'
+      when 'week'
+        'week'
       when 'every two weeks'
         'week'
       when 'twice a year'
@@ -52,8 +56,6 @@ class EventRecurrence < ActiveRecord::Base
       when 'week', 'every two weeks'
         options[:starts].strftime('%A').downcase.to_sym
     end
-
-
     Recurrence.new(options).events
   end
 
