@@ -27,10 +27,10 @@ class EventRecurrence < ActiveRecord::Base
       end
     self.every = 
       case self.every
-      when 'day'
-        'day'
-      when 'week'
-        'week'
+      # when 'day'
+      #   'day'
+      # when 'week'
+      #   'week'
       when 'every two weeks'
         'week'
       when 'twice a year'

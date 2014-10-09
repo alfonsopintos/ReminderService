@@ -1,4 +1,6 @@
 class ApiKey < ActiveRecord::Base
+  validates :access_token, uniqueness: true
+
   belongs_to :client
 
   before_create :generate_access_token
