@@ -7,4 +7,5 @@ class Text < ActiveRecord::Base
   validates :text_reminder, presence: true
   validates :text_reminder, :length => {maximum: 160}
 
+  
 end

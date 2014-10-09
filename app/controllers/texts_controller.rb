@@ -27,7 +27,7 @@ class TextsController < ApplicationController
     @event_recurrence = EventRecurrence.new(event_recurrence_params)
     @text = Text.new(text_params)
     @text.event_recurrence = @event_recurrence
-
+    
     respond_to do |format|
       if @text.save && @event_recurrence.save
         format.html { redirect_to @text, notice: 'Text was successfully created.' }

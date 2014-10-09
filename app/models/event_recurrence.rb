@@ -12,6 +12,31 @@ class EventRecurrence < ActiveRecord::Base
 
   validate :end_date_is_after_start_date, 
     :start_date_is_before_end_date
+
+  before_save :correct_every_and_interval
+  
+
+
+  def correct_every_and_interval
+    self.interval = 
+      case self.every
+      when 'every two weeks'
+         2 #weeks
+      when 'twice a year'
+         6 #months 
+      end
+    self.every = 
+      case self.every
+      when 'every two weeks'
+        'week'
+      when 'twice a year'
+        'month'
+      when 'month'
+        'month'
+      when 'year'
+        'year'
+      end
+  end
   
   def dates(options={})
     options = {:every => every, :starts => start_date, :until => end_date, :interval => interval || 1}.merge(options)
@@ -28,17 +53,6 @@ class EventRecurrence < ActiveRecord::Base
         options[:starts].strftime('%A').downcase.to_sym
     end
 
-    options[:every] = 
-      case options[:every]
-      when 'every two weeks'
-        'week'
-      when 'twice a year'
-        'month'
-      when 'month'
-        'month'
-      when 'year'
-        'year'
-    end
 
     Recurrence.new(options).events
   end
