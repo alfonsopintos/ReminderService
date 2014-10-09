@@ -1,8 +1,8 @@
 class EventRecurrence < ActiveRecord::Base
   
-  has_one :text, :dependent => :destroy
-  has_one :call, :dependent => :destroy
-  has_one :email, :dependent => :destroy
+  has_one :text, dependent: :destroy
+  has_one :call, dependent: :destroy
+  has_one :email, dependent: :destroy
 
 
   validates :start_date, presence: true

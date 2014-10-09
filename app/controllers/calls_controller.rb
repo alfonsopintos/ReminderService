@@ -1,6 +1,6 @@
 class CallsController < ApplicationController
   before_action :set_call, only: [:show, :edit, :update, :destroy]
-  before_filter :restrict_access
+  before_filter :restrict_access_call
   # GET /calls
   # GET /calls.json
   def index
@@ -64,6 +64,19 @@ class CallsController < ApplicationController
   end
 
   private
+    def restrict_access_call
+      authenticate_or_request_with_http_token do |token, options|
+      ApiKey.exists?(access_token: token)
+      # ApiKey.where searches through our database until it finds an instance -- 
+      # where the access_token and the token being passed in by the user are equal.
+      # .take retrieves a record without any order. since there is only one...it takes the hash we need
+      api_key = ApiKey.where(access_token: token).take   
+      # @client is being set equal to the value of the client_id key in the api_key hash
+      @client = Client.find(api_key['client_id'].to_i)
+      # email_counter is a method in the client model that increments the client email_count by one every time its called
+      @client.call_counter 
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_call
       @call = Call.find(params[:id])
