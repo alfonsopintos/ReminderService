@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20141012171919) do
 
   create_table "clients", force: true do |t|
     t.string  "name"
-    t.integer "text_count"
-    t.integer "call_count"
-    t.integer "email_count"
+    t.integer "text_count",  default: 0
+    t.integer "call_count",  default: 0
+    t.integer "email_count", default: 0
   end
 
   create_table "emails", force: true do |t|
