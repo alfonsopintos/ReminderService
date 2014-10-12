@@ -3,8 +3,7 @@ class CreateCalls < ActiveRecord::Migration
     create_table :calls do |t|
       t.string :cell_phone
       t.text :call_reminder
-
-      t.timestamps
+      t.references :event_recurrence, index: true
     end
   end
 end

@@ -11,64 +11,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008193112) do
+ActiveRecord::Schema.define(version: 20141012171919) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "api_keys", force: true do |t|
-    t.string   "access_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "client_id"
+    t.string  "access_token"
+    t.integer "client_id"
   end
 
-  add_index "api_keys", ["client_id"], name: "index_api_keys_on_client_id"
+  add_index "api_keys", ["client_id"], name: "index_api_keys_on_client_id", using: :btree
 
   create_table "calls", force: true do |t|
-    t.string   "cell_phone"
-    t.text     "call_reminder"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "event_recurrence_id"
+    t.string  "cell_phone"
+    t.text    "call_reminder"
+    t.integer "event_recurrence_id"
   end
 
-  add_index "calls", ["event_recurrence_id"], name: "index_calls_on_event_recurrence_id"
+  add_index "calls", ["event_recurrence_id"], name: "index_calls_on_event_recurrence_id", using: :btree
 
   create_table "clients", force: true do |t|
-    t.string   "name"
-    t.integer  "text_count",  default: 0
-    t.integer  "call_count",  default: 0
-    t.integer  "email_count", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "name"
+    t.integer "text_count"
+    t.integer "call_count"
+    t.integer "email_count"
   end
 
   create_table "emails", force: true do |t|
-    t.string   "email_address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "event_recurrence_id"
-    t.text     "email_reminder"
+    t.string  "email_address"
+    t.text    "email_reminder"
+    t.integer "event_recurrence_id"
   end
 
-  add_index "emails", ["event_recurrence_id"], name: "index_emails_on_event_recurrence_id"
+  add_index "emails", ["event_recurrence_id"], name: "index_emails_on_event_recurrence_id", using: :btree
 
   create_table "event_recurrences", force: true do |t|
     t.string   "object_id"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "every"
+    t.integer  "interval"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "interval"
   end
 
   create_table "texts", force: true do |t|
-    t.string   "cell_phone"
-    t.text     "text_reminder"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "event_recurrence_id"
+    t.string  "cell_phone"
+    t.text    "text_reminder"
+    t.integer "event_recurrence_id"
   end
 
-  add_index "texts", ["event_recurrence_id"], name: "index_texts_on_event_recurrence_id"
+  add_index "texts", ["event_recurrence_id"], name: "index_texts_on_event_recurrence_id", using: :btree
 
 end
